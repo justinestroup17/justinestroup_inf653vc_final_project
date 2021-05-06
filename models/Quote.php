@@ -64,6 +64,7 @@
           $this->authorId = $row['authorId'];
           $this->categoryId = $row['categoryId'];
           $this->categoryName = $row['categoryName'];
+          $this->author = $row['author'];
     }
 /*
     // Create Post
