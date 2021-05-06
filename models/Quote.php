@@ -34,17 +34,19 @@
 
       return $stmt;
     }
-/*
+
     // Get Single Post
     public function read_single() {
           // Create query
-          $query = 'SELECT c.name as category_name, p.id, p.category_id, p.title, p.body, p.author, p.created_at
-                                    FROM ' . $this->table . ' p
-                                    LEFT JOIN
-                                      categories c ON p.category_id = c.id
-                                    WHERE
-                                      p.id = ?
-                                    LIMIT 0,1';
+          $query = 'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
+                    FROM ' . $this->table . ' q
+                    LEFT JOIN
+                      categories c ON q.categoryId = c.id
+                    RIGHT JOIN
+                      authors a ON q.authorId = a.id
+                    WHERE
+                      q.id = ?
+                    LIMIT 0, 1';
 
           // Prepare statement
           $stmt = $this->conn->prepare($query);
