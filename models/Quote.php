@@ -99,29 +99,30 @@
 
       return false;
     }
-    /*
+    
     // Update Quote
     public function update() {
           // Create query
           $query = 'UPDATE ' . $this->table . '
-                                SET title = :title, body = :body, author = :author, category_id = :category_id
-                                WHERE id = :id';
+                    SET
+                      quote = :quote,
+                      authorId = :authorId,
+                      categoryId = :categoryId
+                    WHERE id = :id';
 
           // Prepare statement
           $stmt = $this->conn->prepare($query);
 
           // Clean data
-          $this->title = htmlspecialchars(strip_tags($this->title));
-          $this->body = htmlspecialchars(strip_tags($this->body));
-          $this->author = htmlspecialchars(strip_tags($this->author));
-          $this->category_id = htmlspecialchars(strip_tags($this->category_id));
+          $this->quote = htmlspecialchars(strip_tags($this->quote));
+          $this->authorId = htmlspecialchars(strip_tags($this->authorId));
+          $this->categoryId = htmlspecialchars(strip_tags($this->categoryId));
           $this->id = htmlspecialchars(strip_tags($this->id));
 
           // Bind data
-          $stmt->bindParam(':title', $this->title);
-          $stmt->bindParam(':body', $this->body);
-          $stmt->bindParam(':author', $this->author);
-          $stmt->bindParam(':category_id', $this->category_id);
+          $stmt->bindParam(':quote', $this->quote);
+          $stmt->bindParam(':authorId', $this->authorId);
+          $stmt->bindParam(':categoryId', $this->categoryId);
           $stmt->bindParam(':id', $this->id);
 
           // Execute query
@@ -134,7 +135,7 @@
 
           return false;
     }
-
+    /*
     // Delete Quote
     public function delete() {
           // Create query
