@@ -66,26 +66,28 @@
           $this->categoryName = $row['categoryName'];
           $this->author = $row['author'];
     }
-/*
-    // Create Post
+
+    // Create Quote
     public function create() {
           // Create query
-          $query = 'INSERT INTO ' . $this->table . ' SET title = :title, body = :body, author = :author, category_id = :category_id';
+          $query = 'INSERT INTO ' . $this->table . '
+                    SET 
+                      quote = :quote,
+                      authorId = :authorId,
+                      categoryId = :categoryId';
 
           // Prepare statement
           $stmt = $this->conn->prepare($query);
 
           // Clean data
-          $this->title = htmlspecialchars(strip_tags($this->title));
-          $this->body = htmlspecialchars(strip_tags($this->body));
-          $this->author = htmlspecialchars(strip_tags($this->author));
-          $this->category_id = htmlspecialchars(strip_tags($this->category_id));
+          $this->quote = htmlspecialchars(strip_tags($this->quote));
+          $this->authorId = htmlspecialchars(strip_tags($this->authorId));
+          $this->categoryId = htmlspecialchars(strip_tags($this->categoryId));
 
           // Bind data
-          $stmt->bindParam(':title', $this->title);
-          $stmt->bindParam(':body', $this->body);
-          $stmt->bindParam(':author', $this->author);
-          $stmt->bindParam(':category_id', $this->category_id);
+          $stmt->bindParam(':quote', $this->quote);
+          $stmt->bindParam(':authorId', $this->authorId);
+          $stmt->bindParam(':categoryId', $this->categoryId);
 
           // Execute query
           if($stmt->execute()) {
@@ -97,8 +99,8 @@
 
       return false;
     }
-
-    // Update Post
+    /*
+    // Update Quote
     public function update() {
           // Create query
           $query = 'UPDATE ' . $this->table . '
@@ -133,7 +135,7 @@
           return false;
     }
 
-    // Delete Post
+    // Delete Quote
     public function delete() {
           // Create query
           $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
