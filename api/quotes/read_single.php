@@ -14,7 +14,7 @@
   $quote = new Quote($db);
 
   // Get ID
-  $quote->id = isset($_GET['id']) ? $_GET['id'] : die();
+  $quote->id = isset(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT)) ? filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) : die();
 
   // Get quote
   $quote->read_single();

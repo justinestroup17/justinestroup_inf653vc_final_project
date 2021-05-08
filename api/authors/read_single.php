@@ -14,7 +14,7 @@
   $author = new Author($db);
 
   // Get ID
-  $author->id = isset($_GET['id']) ? $_GET['id'] : die();
+  $author->id = isset(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT)) ? filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) : die();
 
   // Get author
   $author->read_single();
