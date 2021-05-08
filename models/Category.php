@@ -53,7 +53,7 @@
 
       // set properties
       $this->id = $row['id'];
-      $this->name = $row['category'];
+      $this->category = $row['category'];
   }
 
   // Create Category
