@@ -6,7 +6,7 @@
 
     // Properties
     public $id;
-    public $name;
+    public $category;
 
     // Constructor with DB
     public function __construct($db) {
@@ -16,7 +16,7 @@
     // Get categories
     public function read() {
       // Create query
-      $query = 'SELECT id, name
+      $query = 'SELECT id, category
                 FROM ' . $this->table . '
                 ';
 
@@ -34,7 +34,7 @@
     // Create query
     $query = 'SELECT
           id,
-          name
+          category
         FROM
           ' . $this->table . '
       WHERE id = ?
@@ -53,7 +53,7 @@
 
       // set properties
       $this->id = $row['id'];
-      $this->name = $row['name'];
+      $this->name = $row['category'];
   }
 
   // Create Category
@@ -62,16 +62,16 @@
     $query = 'INSERT INTO ' .
       $this->table . '
     SET
-      name = :name';
+      category = :category';
 
   // Prepare Statement
   $stmt = $this->conn->prepare($query);
 
   // Clean data
-  $this->name = htmlspecialchars(strip_tags($this->name));
+  $this->category = htmlspecialchars(strip_tags($this->category));
 
   // Bind data
-  $stmt-> bindParam(':name', $this->name);
+  $stmt-> bindParam(':category', $this->category);
 
   // Execute query
   if($stmt->execute()) {
@@ -90,7 +90,7 @@
     $query = 'UPDATE ' .
       $this->table . '
     SET
-      name = :name
+      category = :category
       WHERE
       id = :id';
 
@@ -98,11 +98,11 @@
   $stmt = $this->conn->prepare($query);
 
   // Clean data
-  $this->name = htmlspecialchars(strip_tags($this->name));
+  $this->category = htmlspecialchars(strip_tags($this->category));
   $this->id = htmlspecialchars(strip_tags($this->id));
 
   // Bind data
-  $stmt-> bindParam(':name', $this->name);
+  $stmt-> bindParam(':category', $this->category);
   $stmt-> bindParam(':id', $this->id);
 
   // Execute query
