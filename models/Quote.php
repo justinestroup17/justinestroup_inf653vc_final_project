@@ -135,7 +135,6 @@
 
           return false;
     }
-    /*
     // Delete Quote
     public function delete() {
           // Create query
@@ -159,6 +158,6 @@
           printf("Error: %s.\n", $stmt->error);
 
           return false;
-    } */
+    }
     
   }
