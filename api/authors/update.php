@@ -5,8 +5,8 @@
   header('Access-Control-Allow-Methods: PUT');
   header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization,X-Requested-With');
 
-  include_once '../../config/Database.php';
-  include_once '../../models/Author.php';
+  require('../../config/Database.php');
+  require('../../models/Author.php');
   // Instantiate DB & connect
   $database = new Database();
   $db = $database->connect();
