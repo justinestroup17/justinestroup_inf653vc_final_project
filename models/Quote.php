@@ -18,6 +18,21 @@
 
     // Get Quotes
     public function read() {
+
+      // Prepare statement
+      $stmt = $this->conn;
+
+      if ($this->authorId) {
+        $stmt->bindParam(':authorId', $this->authorId);
+        // Create query
+        $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
+                    FROM ' . $this->table . ' q
+                    LEFT JOIN
+                      categories c ON q.categoryId = c.id
+                    RIGHT JOIN
+                      authors a ON q.authorId = a.id
+                    WHERE q.authorId = :authorId';
+     } else
       // Create query
       $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
                   FROM ' . $this->table . ' q
@@ -34,20 +49,9 @@
         $stmt->bindParam(':authorId', $this->authorId);
         $stmt->bindParam(':categoryId', $this->categoryId);
       } else*/
-      /*
-      // Prepare statement
-      $stmt = $this->conn->prepare($query);
-      */
-
-      // Prepare statement
-      $stmt = $this->conn;
       
-      if ($this->authorId) {
-        $stmt->bindParam(':authorId', $this->authorId);
-
-        $query = $query . ' WHERE q.authorId = :authorId';
-     }
-     $stmt->prepare($query);
+      // Prepare statement
+      $stmt->prepare($query);
 
       // Execute query
       $stmt->execute();
