@@ -32,7 +32,7 @@
                     RIGHT JOIN
                       authors a ON q.authorId = a.id
                     WHERE q.authorId = :authorId';
-     } else
+     } else {
       // Create query
       $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
                   FROM ' . $this->table . ' q
@@ -49,7 +49,7 @@
         $stmt->bindParam(':authorId', $this->authorId);
         $stmt->bindParam(':categoryId', $this->categoryId);
       } else*/
-      
+    }
       // Prepare statement
       $stmt->prepare($query);
 
