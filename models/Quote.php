@@ -51,7 +51,7 @@
       } else*/
     }
       // Prepare statement
-      $stmt->prepare($query);
+      $stmt = $this->conn->prepare($query);
 
       // Execute query
       $stmt->execute();
