@@ -1,3 +1,6 @@
+<body>
+Test
+</body>
 <?php
 
 // Model
