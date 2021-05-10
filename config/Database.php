@@ -13,7 +13,12 @@
       $password = $dbparts['pass'];
       $database = ltrim($dbparts['path'],'/');
 
-      $dsn = "mysql:host={$hostname};dbname={$database}";
+      // host: wcwimj6zu5aaddlj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	
+      // username: u8q7lyfw1vlm8io2
+      // password: tn6uqo7avcuhavc9	
+
+      //$dsn = "mysql:host={$hostname};dbname={$database}";
+      $dsn = "mysql:host=wcwimj6zu5aaddlj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=v38z3coezpqellzm";
       $this->conn = null;
 
       try { 
@@ -25,3 +30,5 @@
       return $this->conn;
     }
   }
+
+  
