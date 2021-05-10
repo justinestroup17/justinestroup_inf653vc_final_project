@@ -10,7 +10,7 @@
     // DB Connect
     public function connect() {
       /*$this->conn = null; */
-      $url = getenv('JAWSDB_MARIA_URL');
+      $url = getenv('JAWSDB_URL');
       $dbparts = parse_url($url);
 
       $hostname = $dbparts['host'];
