@@ -1,0 +1,340 @@
+/*=== CSS Reset ===*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /*=== Base Elements ===*/
+  .my-errors {
+    color: red;
+  }
+  html {
+    font-size: 18px;
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  main {
+    width: 100%;
+    flex-grow: 1;
+    background-color: white;
+    padding: 10px;
+  }
+  
+  input,
+  label,
+  select {
+    font-size: 1rem;
+  }
+  
+  header {
+    border-bottom: 2px solid black;
+  }
+  
+  header h1 {
+    padding: 0.5em 0.25em;
+    color: black;
+    font-size: 150%;
+  }
+  
+  h2 {
+    font-size: 120%;
+    margin: 0;
+    padding: 0.25em 0 0.5em;
+    color: rgb(208, 133, 4);
+  }
+  
+  nav {
+    display: block;
+  }
+  
+  section {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  a {
+    color: royalblue;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    color: rgb(208, 133, 4);
+  }
+  
+  footer {
+    padding: 0 10px 10px;
+    border-top: 2px solid black;
+  }
+  
+  footer p {
+    text-align: right;
+    margin-top: 0.5em;
+    font-size: 80%;
+  }
+  
+  /*==== Utility Classes ====*/
+  .admin-error {
+    color: red;
+  }
+  .button {
+    border-radius: 10px;
+    text-shadow: 2px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
+    color: white;
+    font-size: 1rem;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .blue {
+    background-color: royalblue;
+  }
+  
+  .red {
+    background-color: orangered;
+  }
+  
+  /*==== Footer Classes ====*/
+  
+  .zippylinks {
+    padding: 0 10px 10px;
+  }
+  .zippylinks p {
+    margin-bottom: 5px;
+  }
+  
+  /*==== Nav Classes ====*/
+  .dropmenus {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropmenus label {
+    position: absolute;
+    left: -10000px;
+  }
+  
+  .dropmenus select {
+    margin: 10px;
+    border: 1px solid gray;
+  }
+  
+  .dropmenus select:not(:first-child) {
+    margin-top: 0;
+  }
+  
+  .sortBy {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  /*=== Table Elements and Classes ===*/
+  
+  table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  tr:hover,
+  tr:focus {
+    background-color: yellow;
+  }
+  
+  td,
+  th {
+    border: 1px dashed black;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    text-align: left;
+  }
+  
+  .admin-table {
+    width: 100%;
+  }
+  
+  .admin-table td:last-child {
+    text-align: center;
+    width: 5vw;
+  }
+  
+  .table-overflow-customer td:last-child {
+    text-align: right;
+  }
+  
+  .table-overflow,
+  .table-overflow-customer, 
+  .admin-table-overflow {
+    max-height: 40vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    border: 1px solid #000;
+  }
+  
+  .table-overflow-customer {
+    max-height: 50vh;
+  }
+  
+  /*=== Admin Pages Classes ===*/
+  
+  .add_vehicle_form, .add_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+  } 
+  
+  .add_vehicle_form div {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+  }
+  
+  .add_container section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add_vehicle_form select {
+    max-width: 400px;
+  }
+  
+  .add_vehicle_form label {
+    margin-bottom: 0.5em;
+  }
+  
+  .add_vehicle_form  input[type="text"] {
+    border: 1px solid gray;
+  }
+  
+  .add_vehicle_form input {
+    max-width: 400px;
+  }
+  
+  /********************************************************************
+  * Media Queries
+  ********************************************************************/
+  @media screen and (min-width: 768px) { 
+    /* at least iPad size */
+    form > input,
+    form > select {
+      max-width: 50%;
+    }
+  
+    table input[type="submit"] {
+      max-width: 100%;
+    }
+  
+    .table-overflow,
+    .table-overflow-customer {
+      overflow-x: auto;
+    }
+  
+    nav section {
+      display: inline-block;
+    }
+  
+    nav select {
+      font-size: 1.2rem;
+    }
+  
+    nav form section div {
+      margin: auto;
+      text-align: center;
+    }
+  
+    .dropmenus {
+      display: flex;
+      padding: 10px;
+    }
+  
+    .dropmenus label {
+      position: absolute;
+      left: -10000px;
+    }
+  
+    .sortBy input[type="submit"] {
+      margin-left: 10px;
+    }
+  
+    .button-slim {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) and (min-height: 1024px) {
+    /* ipad @ 768w x 1024h and iPad Pro @ 1024w x 1366h */
+    .table-overflow-customer {
+      max-height: 75vh;
+    }
+  }
+  
+  @media screen and (min-width: 1025px) {
+    /* larger than iPad Pro */
+    main {
+      max-width: 1024px;
+      min-height: 95vh;
+      max-height: 95vh;
+      margin: auto;
+      border: 1px solid black;
+      box-shadow: 5px 10px 8px #888888;
+    }
+  
+    .dropmenus {
+      flex-direction: row;
+      justify-content: center;
+    }
+  
+    .dropmenus select {
+      min-width: 200px;
+    }
+  }
+  
+  @media screen and (min-width: 500px) and (max-height: 999px) {
+    /* my office monitor is 1762w and 991h */
+    /* which is wide... but has a short height */
+    .table-overflow {
+      max-height: 45vh;
+    }
+  
+    .table-overflow-customer {
+      max-height: 40vh;
+    }
+  
+    .add_vehicle_form, .add_container {
+      flex-direction: row;
+    }
+    
+    .zippylinks {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+  
+  @media screen and (min-width: 1080px) and (min-height: 1080px) {
+    /* for largest monitors */
+    .table-overflow, .table-overflow-customer {
+      max-height: 50vh;
+    }
+  
+    .admin-table, .admin-table-overflow {
+      max-height: 70vh;
+    }
+  }  
