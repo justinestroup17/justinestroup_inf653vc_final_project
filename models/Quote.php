@@ -26,6 +26,9 @@
                   RIGHT JOIN
                     authors a ON q.authorId = a.id';
       
+      if ($this->authorId && $this->categoryId) {
+        $query = $query . " WHERE q.authorId = :authorId AND q.categoryId = :categoryId";
+
       // Prepare statement
       $stmt = $this->conn->prepare($query);
 
@@ -52,7 +55,7 @@
           $stmt = $this->conn->prepare($query);
 
           // Bind ID
-          $stmt->bindParam(1, $this->id);
+          $stmt->bindValue(1, $this->id);
 
           // Execute query
           $stmt->execute();

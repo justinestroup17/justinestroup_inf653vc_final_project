@@ -36,6 +36,7 @@
         'categoryName' => $categoryName
       );
 
+
       // Push to "data"
       array_push($quotes_arr, $quote_item);
       //array_push($quotes_arr['data'], $quote_item);
