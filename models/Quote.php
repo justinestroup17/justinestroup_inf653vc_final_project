@@ -25,20 +25,29 @@
                     categories c ON q.categoryId = c.id
                   RIGHT JOIN
                     authors a ON q.authorId = a.id';
-      if ($this->authorId && $this->categoryId) {
+      
+      /*if ($this->authorId && $this->categoryId) {
         $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
         // Prepare statement
         $stmt = $this->conn->prepare($query);
         // Bind parameters
         $stmt->bindParam(':authorId', $this->authorId);
         $stmt->bindParam(':categoryId', $this->categoryId);
-      } else if ($this->authorId) {
-        $query = $query . ' WHERE q.authorId = :authorId';
-        // Prepare statement
-        $stmt = $this->conn->prepare($query);
-        // Bind parameters
+      } else*/
+      /*
+      // Prepare statement
+      $stmt = $this->conn->prepare($query);
+      */
+
+      // Prepare statement
+      $stmt = $this->conn;
+      
+      if ($this->authorId) {
         $stmt->bindParam(':authorId', $this->authorId);
+
+        $query = $query . ' WHERE q.authorId = :authorId';
      }
+     $stmt->prepare($query);
 
       // Execute query
       $stmt->execute();

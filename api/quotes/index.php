@@ -41,10 +41,7 @@
       array_push($quotes_arr, $quote_item);
       //array_push($quotes_arr['data'], $quote_item);
     }
-    if ($this->authorId) {
-       $stmt->bindParam(':authorId', $this->authorId);
-    }
-    
+
     // Turn to JSON & output
     echo json_encode($quotes_arr);
 
