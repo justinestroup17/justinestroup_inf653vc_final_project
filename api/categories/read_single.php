@@ -14,7 +14,7 @@
   $category = new Category($db);
 
   // Get ID
-  $category->id = isset(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT)) ? filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) : die();
+  $category->id = isset($_GET['id']) ? $_GET['id'] : die();
 
   // Get category
   $category->read_single();
