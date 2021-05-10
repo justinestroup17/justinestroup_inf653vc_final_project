@@ -44,7 +44,7 @@
       $stmt = $this->conn->prepare($query);
 
       // Bind ID
-      $stmt->bindValue(1, $this->id);
+      $stmt->bindParam(1, $this->id);
 
       // Execute query
       $stmt->execute();
@@ -71,7 +71,7 @@
   $this->category = htmlspecialchars(strip_tags($this->category));
 
   // Bind data
-  $stmt-> bindParam(':category', $this->category);
+  $stmt->bindParam(':category', $this->category);
 
   // Execute query
   if($stmt->execute()) {
