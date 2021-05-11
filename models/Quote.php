@@ -28,12 +28,13 @@
                     
         /*if ($this->authorId && $this->categoryId) {
           $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
-        } else*/ if ($this->authorId){
+        } else*/ if ($this->authorId) {
           $query = $query . ' WHERE q.authorId = :authorId';
           $stmt = $this->conn->prepare($query);
           $stmt->bindParam(":authorId", $this->authorId);
           // Execute query
         $stmt->execute();
+        echo 'Did do if clause';
 
       return $stmt;
 
@@ -49,7 +50,7 @@
       $stmt = $this->conn->prepare($query);
       // Execute query
       $stmt->execute();
-
+      echo 'Did not do if clause';
       return $stmt;
     }
 
