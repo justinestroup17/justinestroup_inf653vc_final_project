@@ -41,6 +41,8 @@
         //$stmt->bindParam(":authorId", $this->authorId, PDO::FETCH_ASSOC);
         //$stmt->bindParam(":categoryId", $this->categoryId, PDO::FETCH_ASSOC);
       
+      // Prepare Query
+      $stmt = $this->conn->prepare($query);
       // Execute query
       $stmt->execute();
 
