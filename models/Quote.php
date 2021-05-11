@@ -25,7 +25,9 @@
                     LEFT JOIN
                       categories c ON q.categoryId = c.id
                     RIGHT JOIN
-                      authors a ON q.authorId = a.id';
+                      authors a ON q.authorId = a.id
+                    ORDER BY
+                      q.id';
         
         // Get and assign parameters
         $authorId = filter_input(INPUT_GET, 'authorId', FILTER_VALIDATE_INT);
@@ -82,6 +84,8 @@
                       categories c ON q.categoryId = c.id
                     RIGHT JOIN
                       authors a ON q.authorId = a.id
+                    ORDER BY
+                      q.id
                     LIMIT ' . $this->limit;
           $stmt = $this->conn->prepare($query);
 
