@@ -18,42 +18,26 @@
 
     // Get Quotes
     public function read() {
-      if ($this->authorId) {
         // Create query
         $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
                     FROM ' . $this->table . ' q
                     LEFT JOIN
                       categories c ON q.categoryId = c.id
                     RIGHT JOIN
-                      authors a ON q.authorId = a.id
-                    WHERE q.authorId = ?';
-                    // Prepare statement
-          $stmt = $this->conn->prepare($query);
-          $stmt->bindParam(1, $this->authorId);
-          //$stmt->bindParam(':authorId', $this->authorId);
-
-     } else {
-      // Create query
-      $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
-                  FROM ' . $this->table . ' q
-                  LEFT JOIN
-                    categories c ON q.categoryId = c.id
-                  RIGHT JOIN
-                    authors a ON q.authorId = a.id';
-      $stmt = $this->conn->prepare($query);
-      
-      /*if ($this->authorId && $this->categoryId) {
-        $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
+                      authors a ON q.authorId = a.id';
+                    
+        if ($this->authorId && $this->categoryId) {
+          $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
+        } else if ($this->authorId){
+          $query = $query . ' WHERE q.authorId = :authorId';
+        } else if ($this->categoryId) {
+          $query = $query . ' WHERE q.categoryId = :categoryId';
+        }
         // Prepare statement
         $stmt = $this->conn->prepare($query);
-        // Bind parameters
-        $stmt->bindParam(':authorId', $this->authorId);
-        $stmt->bindParam(':categoryId', $this->categoryId);
-      } else*/
-    }
-      // Prepare statement
+        $stmt->bindParam(":authorId", $this->authorId, PDO::FETCH_ASSOC);
+        $stmt->bindParam(":categoryId", $this->categoryId, PDO::FETCH_ASSOC);
       
-
       // Execute query
       $stmt->execute();
 
