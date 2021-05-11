@@ -76,9 +76,6 @@
         // Specific limit was specified
         if ($limit) {
           $this->limit = $limit;
-          echo 'New new new';
-          //$this->limit = $limit;
-          //echo 'Limit clause was entered as limit is 1';
           $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
                     FROM ' . $this->table . ' q
                     LEFT JOIN
@@ -86,10 +83,7 @@
                     RIGHT JOIN
                       authors a ON q.authorId = a.id
                     LIMIT ' . $this->limit;
-          //$query = $query . ' LIMIT :limit';
           $stmt = $this->conn->prepare($query);
-          //$stmt->bindValue(":limit", $this->limit);
-          
           // Execute query
           $stmt->execute();
           
