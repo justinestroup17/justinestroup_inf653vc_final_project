@@ -26,11 +26,7 @@
                     RIGHT JOIN
                       authors a ON q.authorId = a.id';
         
-
-        /*if ($this->authorId && $this->categoryId) {
-          $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
-        } else*/
-
+        // Get and assign parameters
         $authorId = filter_input(INPUT_GET, 'authorId', FILTER_VALIDATE_INT);
         $categoryId = filter_input(INPUT_GET, 'categoryId', FILTER_VALIDATE_INT);
         $limit = filter_input(INPUT_GET, 'limit', FILTER_VALIDATE_INT);
@@ -45,6 +41,7 @@
           $this->limit = $limit;
         }
 
+        // Specific authorId was specified
         if ($this->authorId) {
           $query = $query . ' WHERE q.authorId = :authorId';
           $stmt = $this->conn->prepare($query);
@@ -54,7 +51,9 @@
           $stmt->execute();
           
           return $stmt; 
-        } else if ($this->categoryId) {
+        }
+        // Specific authorId was specified
+        if ($this->categoryId) {
           $query = $query . ' WHERE q.categoryId = :categoryId';
           $stmt = $this->conn->prepare($query);
           $stmt->bindParam(":categoryId", $this->categoryId);
@@ -64,16 +63,24 @@
           
           return $stmt; 
         }
-        // Prepare statement
-        //$stmt = $this->conn->prepare($query);
-        //$stmt->bindParam(":authorId", $this->authorId, PDO::FETCH_ASSOC);
-        //$stmt->bindParam(":categoryId", $this->categoryId, PDO::FETCH_ASSOC);
+        // Both specific authorId and specific categoryId were specified
+        if ($this->authorId && $this->categoryId) {
+          $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
+          $stmt = $this->conn->prepare($query);
+          $stmt->bindParam(":authorId", $this->authorId);
+          $stmt->bindParam(":categoryId", $this->categoryId);
+          
+          // Execute query
+          $stmt->execute();
+          
+          return $stmt; 
+        }
+        // Additional paramaters were not specified
       
       // Prepare Query
       $stmt = $this->conn->prepare($query);
       // Execute query
       $stmt->execute();
-      echo 'Did not do any if clauses';
       return $stmt;
     }
 
