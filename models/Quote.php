@@ -75,10 +75,11 @@
         }
         // Specific limit was specified
         if ($limit == 1) {
+          $this->limit = $limit;
           echo 'Limit clause was entered as limit is 1';
           $query = $query . ' LIMIT :limit';
           $stmt = $this->conn->prepare($query);
-          $stmt->bindValue(":limit", $limit);
+          $stmt->bindValue(":limit", $this->limit);
           
           // Execute query
           $stmt->execute();
