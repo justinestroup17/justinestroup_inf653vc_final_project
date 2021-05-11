@@ -76,7 +76,7 @@
         // Specific limit was specified
         if ($limit) {
           $this->limit = $limit;
-          $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
+          $query =   'SELECT c.category as categoryName, q.id, q.quote, a.author
                     FROM ' . $this->table . ' q
                     LEFT JOIN
                       categories c ON q.categoryId = c.id
