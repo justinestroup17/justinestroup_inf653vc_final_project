@@ -26,17 +26,20 @@
                     RIGHT JOIN
                       authors a ON q.authorId = a.id';
                     
-        if ($this->authorId && $this->categoryId) {
+        /*if ($this->authorId && $this->categoryId) {
           $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
-        } else if ($this->authorId){
+        } else*/ if ($this->authorId){
           $query = $query . ' WHERE q.authorId = :authorId';
-        } else if ($this->categoryId) {
+          $stmt = $this->conn->prepare($query);
+          $stmt->bindParam(":authorId", $this->authorId);
+
+        } /*else /if ($this->categoryId) {
           $query = $query . ' WHERE q.categoryId = :categoryId';
-        }
+        } */
         // Prepare statement
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":authorId", $this->authorId, PDO::FETCH_ASSOC);
-        $stmt->bindParam(":categoryId", $this->categoryId, PDO::FETCH_ASSOC);
+        //$stmt = $this->conn->prepare($query);
+        //$stmt->bindParam(":authorId", $this->authorId, PDO::FETCH_ASSOC);
+        //$stmt->bindParam(":categoryId", $this->categoryId, PDO::FETCH_ASSOC);
       
       // Execute query
       $stmt->execute();
