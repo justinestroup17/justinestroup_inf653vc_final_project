@@ -26,7 +26,8 @@
                       categories c ON q.categoryId = c.id
                     RIGHT JOIN
                       authors a ON q.authorId = a.id
-                    WHERE q.authorId = :authorId';
+                    WHERE q.authorId = :authorId
+                    LIMIT 0, 1';
                     // Prepare statement
           $stmt = $this->conn->prepare($query);
           $stmt->bindParam(':authorId', $this->authorId);
