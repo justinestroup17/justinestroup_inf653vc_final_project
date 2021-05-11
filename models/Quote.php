@@ -25,9 +25,7 @@
                     LEFT JOIN
                       categories c ON q.categoryId = c.id
                     RIGHT JOIN
-                      authors a ON q.authorId = a.id
-                    ORDER BY
-                      q.id';
+                      authors a ON q.authorId = a.id';
         
         // Get and assign parameters
         $authorId = filter_input(INPUT_GET, 'authorId', FILTER_VALIDATE_INT);
