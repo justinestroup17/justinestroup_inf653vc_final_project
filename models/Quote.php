@@ -49,15 +49,21 @@
           $query = $query . ' WHERE q.authorId = :authorId';
           $stmt = $this->conn->prepare($query);
           $stmt->bindParam(":authorId", $this->authorId);
+          
           // Execute query
-        $stmt->execute();
-        echo 'Did do if clause';
-
-      return $stmt; 
-
-        } /*else /if ($this->categoryId) {
+          $stmt->execute();
+          
+          return $stmt; 
+        } else if ($this->categoryId) {
           $query = $query . ' WHERE q.categoryId = :categoryId';
-        } */
+          $stmt = $this->conn->prepare($query);
+          $stmt->bindParam(":categoryId", $this->categoryId);
+          
+          // Execute query
+          $stmt->execute();
+          
+          return $stmt; 
+        }
         // Prepare statement
         //$stmt = $this->conn->prepare($query);
         //$stmt->bindParam(":authorId", $this->authorId, PDO::FETCH_ASSOC);
@@ -67,7 +73,7 @@
       $stmt = $this->conn->prepare($query);
       // Execute query
       $stmt->execute();
-      echo 'Did not do if clause';
+      echo 'Did not do any if clauses';
       return $stmt;
     }
 
