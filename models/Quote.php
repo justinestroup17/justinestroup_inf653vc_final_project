@@ -38,9 +38,6 @@
         if ($categoryId) {
           $this->categoryId = $categoryId;
         }
-        if ($limit) {
-          $this->limit = $limit;
-        }
 
         // Both specific authorId and specific categoryId were specified
         if ($this->authorId && $this->categoryId) {
@@ -77,7 +74,7 @@
           return $stmt; 
         }
         // Specific limit was specified
-        if ($this->limit) {
+        if ($limit) {
           $query = $query . ' LIMIT :limit';
           $stmt = $this->conn->prepare($query);
           $stmt->bindValue(":limit", $this->limit);
