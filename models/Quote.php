@@ -77,7 +77,7 @@
         }
         // Specific limit was specified
         if ($this->limit) {
-          $query = $query . ' LIMIT :limit';
+          $query = $query . ' LIMIT ' . $this->limit;
           $stmt = $this->conn->prepare($query);
           $stmt->bindParam(":limit", $this->limit);
           
