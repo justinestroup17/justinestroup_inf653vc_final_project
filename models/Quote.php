@@ -76,7 +76,7 @@
         // Specific limit was specified
         if ($limit) {
           $this->limit = $limit;
-          echo 'New new';
+          echo 'New new new';
           //$this->limit = $limit;
           //echo 'Limit clause was entered as limit is 1';
           $query =   'SELECT c.category as categoryName, q.id, q.categoryId, q.authorId, q.quote, a.author
