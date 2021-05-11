@@ -36,6 +36,7 @@
 
           // Push to array
           array_push($auth_arr['data'], $auth_item);
+          array_push($auth_arr, $auth_item);
         }
 
         // Turn to JSON & output

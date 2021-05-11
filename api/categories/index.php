@@ -36,6 +36,7 @@
 
           // Push to array
           array_push($cat_arr['data'], $cat_item);
+          array_push($catt_arr, $cat_item);
         }
 
         // Turn to JSON & output
