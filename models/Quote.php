@@ -77,7 +77,7 @@
         if ($limit) {
           $query = $query . ' LIMIT :limit';
           $stmt = $this->conn->prepare($query);
-          $stmt->bindParam(":limit", $this->limit);
+          $stmt->bindParam(":limit", $limit);
           
           // Execute query
           $stmt->execute();
