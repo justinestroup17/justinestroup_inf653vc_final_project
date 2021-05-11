@@ -75,6 +75,17 @@
           
           return $stmt; 
         }
+        // Specific limit was specified
+        if ($this->limit) {
+          $query = $query . ' LIMIT :limit';
+          $stmt = $this->conn->prepare($query);
+          $stmt->bindValue(":limit", $this->limit);
+          
+          // Execute query
+          $stmt->execute();
+          
+          return $stmt; 
+        }
       
       /* Additional paramaters were not specified */
       
