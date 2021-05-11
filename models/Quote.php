@@ -32,6 +32,10 @@
           $query = $query . ' WHERE q.authorId = :authorId';
           $stmt = $this->conn->prepare($query);
           $stmt->bindParam(":authorId", $this->authorId);
+          // Execute query
+        $stmt->execute();
+
+      return $stmt;
 
         } /*else /if ($this->categoryId) {
           $query = $query . ' WHERE q.categoryId = :categoryId';
