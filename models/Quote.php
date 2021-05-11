@@ -4,12 +4,13 @@
     private $conn;
     private $table = 'quotes';
 
-    // Post Properties
+    // Quote Properties
     public $id;
     public $categoryId;
     public $authorId;
     public $categoryName;
     public $quote;
+    public $limit;
 
     // Constructor with DB
     public function __construct($db) {
