@@ -1,6 +1,3 @@
-<body>
-Testy
-</body>
 <?php
 
 // Model
