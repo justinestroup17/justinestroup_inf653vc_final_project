@@ -25,10 +25,27 @@
                       categories c ON q.categoryId = c.id
                     RIGHT JOIN
                       authors a ON q.authorId = a.id';
-                    
+        
+
         /*if ($this->authorId && $this->categoryId) {
           $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
-        } else*/ if ($this->authorId) {
+        } else*/
+
+        $authorId = filter_input(INPUT_GET, 'authorId', FILTER_VALIDATE_INT);
+        $categoryId = filter_input(INPUT_GET, 'categoryId', FILTER_VALIDATE_INT);
+        $limit = filter_input(INPUT_GET, 'limit', FILTER_VALIDATE_INT);
+
+        if ($authorId) {
+          $this->authorId = $authorId;
+        }
+        if ($categoryId) {
+          $this->categoryId = $categoryId;
+        }
+        if ($limit) {
+          $this->limit = $limit;
+        }
+
+        if ($this->authorId) {
           $query = $query . ' WHERE q.authorId = :authorId';
           $stmt = $this->conn->prepare($query);
           $stmt->bindParam(":authorId", $this->authorId);
@@ -36,7 +53,7 @@
         $stmt->execute();
         echo 'Did do if clause';
 
-      return $stmt;
+      return $stmt; 
 
         } /*else /if ($this->categoryId) {
           $query = $query . ' WHERE q.categoryId = :categoryId';
