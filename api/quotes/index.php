@@ -30,6 +30,8 @@
         'id' => $id,
         'quote' => html_entity_decode($quote),
         'author' => $author,
+        'authorId' => $authorId,
+        'categoryId' => $categoryId,
         'category' => $categoryName
       );
 
