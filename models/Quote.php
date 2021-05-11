@@ -74,7 +74,7 @@
           return $stmt; 
         }
         // Specific limit was specified
-        if ($limit == 1) {
+        if ($limit) {
           $this->limit = $limit;
           echo 'New new';
           //$this->limit = $limit;
