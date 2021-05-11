@@ -30,9 +30,9 @@
         'id' => $id,
         'quote' => html_entity_decode($quote),
         'author' => $author,
-        'authorId' => $authorId,
-        'categoryId' => $categoryId,
-        'category' => $categoryName
+        'authorId' => $authorId
+        //'categoryId' => $categoryId,
+        //'category' => $categoryName
       );
 
 
@@ -46,6 +46,6 @@
   } else {
     // No Posts
     echo json_encode(
-      array('message' => 'No Posts Found')
+      array('message' => 'No Quotes Found')
     );
   }
