@@ -41,7 +41,7 @@
     }
 
     // Turn to JSON & output
-    echo json_encode($quotes_item);
+    echo json_encode($quotes_arr);
 
   } else {
     // No Posts
