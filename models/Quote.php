@@ -41,6 +41,18 @@
           $this->limit = $limit;
         }
 
+        // Both specific authorId and specific categoryId were specified
+        if ($this->authorId && $this->categoryId) {
+          $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
+          $stmt = $this->conn->prepare($query);
+          $stmt->bindParam(":authorId", $this->authorId);
+          $stmt->bindParam(":categoryId", $this->categoryId);
+          
+          // Execute query
+          $stmt->execute();
+          
+          return $stmt; 
+        }
         // Specific authorId was specified
         if ($this->authorId) {
           $query = $query . ' WHERE q.authorId = :authorId';
@@ -63,19 +75,8 @@
           
           return $stmt; 
         }
-        // Both specific authorId and specific categoryId were specified
-        if ($this->authorId && $this->categoryId) {
-          $query = $query . ' WHERE q.authorId = :authorId AND q.categoryId = :categoryId';
-          $stmt = $this->conn->prepare($query);
-          $stmt->bindParam(":authorId", $this->authorId);
-          $stmt->bindParam(":categoryId", $this->categoryId);
-          
-          // Execute query
-          $stmt->execute();
-          
-          return $stmt; 
-        }
-        // Additional paramaters were not specified
+      
+      /* Additional paramaters were not specified */
       
       // Prepare Query
       $stmt = $this->conn->prepare($query);
